@@ -1,52 +1,52 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'homepage.dart';
 
-void main() {
-  runApp(login());
-}
 
-class login extends StatelessWidget {
+
+
+
+class signin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login Page',
+      title: 'Sign In Page',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: SignInPage(),
     );
   }
 }
 
-class LoginPage extends StatefulWidget {
+class SignInPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignInPageState createState() => _SignInPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignInPageState extends State<SignInPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void _login() {
+  void _signIn() {
     String username = _usernameController.text.trim();
     String password = _passwordController.text;
 
-    // Implement your login logic here.
-    // For simplicity, let's just print the username and password.
+    // Implement your authentication logic here.
+    // For example, you can validate the username and password,
+    // and navigate to the next screen if authentication succeeds.
+    // For simplicity, I'm just printing the username and password.
     print('Username: $username');
     print('Password: $password');
 
-    // You can replace the print statements with actual login logic.
-    // For example, validate the credentials against a database or API.
+    // Clear text fields after sign-in attempt
+    _usernameController.clear();
+    _passwordController.clear();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text('Sign In'),
       ),
       body: Padding(
         padding: EdgeInsets.all(20.0),
@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(
-                labelText: 'Username',
+                labelText: 'Username or Email',
               ),
             ),
             SizedBox(height: 20.0),
@@ -69,8 +69,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 20.0),
             ElevatedButton(
-              onPressed: _login,
-              child: Text('Login'),
+              onPressed: _signIn,
+              child: Text('Sign In'),
             ),
           ],
         ),
